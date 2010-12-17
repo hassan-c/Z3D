@@ -7,10 +7,24 @@ class Index extends Controller {
 		parent::__construct();
 	}
 	
+	/**
+	 * @todo Create view skeleton for all pages
+	 */
+	
 	function index()
 	{
 		$this->load->helper('form');
 		$this->load->view('index_view');
+	}
+	
+	function create()
+	{
+		$this->load->view('index_create_view');
+	}
+	
+	function login()
+	{
+		$this->load->view('index_login_view');
 	}
 }
 
