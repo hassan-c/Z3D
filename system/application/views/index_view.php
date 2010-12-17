@@ -9,6 +9,8 @@
 		
 		<p>Get started by creating your very own Z3D and giving it a password:</p>
 		
+		<p><?=validation_errors()?></p>
+		
 		<?=form_open('index/create')?>
 		
 		Z3D name: <?=form_input('z3d')?>
