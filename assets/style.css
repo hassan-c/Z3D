@@ -37,11 +37,20 @@ code {
 .red {
 	color: red;
 }
+
 .strong {
 	font-weight: bold;
 }
 
+.italic {
+	font-style: italic;
+}
 
+/* Other Rules */
+.group {
+	padding: 0 0 10px 0;
+	border-bottom: 1px solid #EEE;
+}
 
 #nav {
 	float: right;

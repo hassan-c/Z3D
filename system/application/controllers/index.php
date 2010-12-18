@@ -12,6 +12,8 @@ class Index extends Controller {
 	/**
 	 * @todo Create view skeleton for all pages
 	 * @todo regex-censor-list
+	 * @todo replace echo in create() - add var in view and pass
+	 * @todo use set_value() on form fields
 	 */
 	
 	function index()
@@ -54,7 +56,7 @@ class Index extends Controller {
 			}
 			else
 			{
-				throw new Exception('error code #0');
+				echo '<p>That username already exists. Please choose a different one.</p>' . anchor('index', 'Go Back');
 			}
 		}
 	}

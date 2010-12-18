@@ -4,7 +4,7 @@
 		| <?=anchor('index/logout', 'Log out')?>
 	<?php else: ?>
 		<?=anchor('index/login', 'Log in')?> or
-		<?=anchor('index/signup', 'Create an account')?>
+		<?=anchor('index', 'Create an account')?>
 	<?php endif; ?>
 	
 </p>

@@ -11,6 +11,6 @@ class User extends Controller {
 	{
 		$this->load->library('ion_auth');
 		
-		$this->load->view('user/view', array('page_title' => 'Z3D Control Panel'));
+		$this->load->view('user/view', array('page_title' => 'User Control Panel'));
 	}
 }
