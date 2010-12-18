@@ -13,7 +13,9 @@ class Index extends Controller {
 	 * @todo Create view skeleton for all pages
 	 * @todo regex-censor-list
 	 * @todo replace echo in create() - add var in view and pass
+	 * @todo add to previous todo: use built-in set error by ion-auth
 	 * @todo use set_value() on form fields
+	 * @todo add model to perform basic tasks
 	 */
 	
 	function index()
