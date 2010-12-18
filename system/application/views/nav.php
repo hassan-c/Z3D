@@ -1,0 +1,1 @@
+<?=anchor('index/login', 'Log in')?> or <?=anchor('Create an account', 'index/signup')?>

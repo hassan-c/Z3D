@@ -7,7 +7,7 @@ body {
 }
 
 a {
- color: #003399;
+ color: #003399;#bababa
  background-color: transparent;
  font-weight: normal;
 }
@@ -31,4 +31,8 @@ code {
  display: block;
  margin: 14px 0 14px 0;
  padding: 12px 10px 12px 10px;
+}
+
+.red {
+	color: red;
 }
