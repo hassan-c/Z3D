@@ -5,6 +5,8 @@ class Index extends Controller {
 	function __construct()
 	{
 		parent::__construct();
+		
+		$this->load->library('ion_auth');
 	}
 	
 	/**
@@ -15,13 +17,23 @@ class Index extends Controller {
 	function index()
 	{
 		$this->load->helper('form');
-		$this->load->view('index/view');
+		
+		if ($this->ion_auth->logged_in())
+		{
+			redirect('user');
+		}
+		
+		$this->load->view('index/view', array('page_title' => 'Welcome'));
 	}
 	
 	function create()
 	{	
 		$this->load->library('form_validation');
-		$this->load->library('ion_auth');
+		
+		if ($this->ion_auth->logged_in())
+		{
+			redirect('user');
+		}
 		
 		$this->form_validation->set_rules('z3d', 'Z3D name', 'trim|required|alpha_numeric');
 		$this->form_validation->set_rules('z3d_pass', 'Z3D password', 'trim|required|matches[z3d_pass_conf]');
@@ -29,17 +41,20 @@ class Index extends Controller {
 		
 		$user = $this->input->post('z3d');
 		$pass = $this->input->post('z3d_pass');
-		$pass_conf = $this->input->post('z3d_pass_conf');
 		
 		if ($this->form_validation->run() == false)
 		{
-			$this->load->view('index/view');
+			$this->load->view('index/view', array('page_title' => 'Welcome'));
 		}
 		else
 		{
-			if ($this->ion_auth->register($user, $pass, 'user@hassanc.co.uk', ''))
+			if ($this->ion_auth->register($user, $pass, $user.'_user@hassanc.co.uk', array()))
 			{
-				$this->load->view('index/create_view');
+				$this->load->view('index/create_view', array('page_title' => 'Create a new Z3D'));
+			}
+			else
+			{
+				throw new Exception('error code #0');
 			}
 		}
 	}
@@ -47,34 +62,41 @@ class Index extends Controller {
 	function login()
 	{
 		$this->load->library('form_validation');
-		$this->load->library('ion_auth');
+		
+		if ($this->ion_auth->logged_in())
+		{
+			redirect('user');
+		}
 		
 		$this->form_validation->set_rules('z3d', 'Z3D name', 'trim|required');
 		$this->form_validation->set_rules('z3d_pass', 'Z3D password', 'trim|required');
 		
 		$user = $this->input->post('z3d');
 		$pass = $this->input->post('z3d_pass');
+		$remember = $this->input->post('remember');
 		
 		if ($this->form_validation->run() == false)
 		{
-			$this->load->view('index/login_view');
+			$this->load->view('index/login_view', array('page_title' => 'Log in'));
 		}
 		else
 		{
-			if ($this->ion_auth->login($user, $pass, 'user@hassanc.co.uk', ''))
+			if ($this->ion_auth->login($user, $pass, $remember))
 			{
-				$this->load->view('user/view');
+				redirect('user');
+			}
+			else
+			{
+				$this->load->view('index/login_view', array('page_title' => 'Log in'));
 			}
 		}
-		
-		$this->load->view('index/login_view');
 	}
 	
 	function logout()
 	{
-		$this->load->library('ion_auth');
-		
 		$this->ion_auth->logout();
+		
+		redirect('index/login');
 	}
 }
 
