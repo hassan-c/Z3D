@@ -13,4 +13,9 @@ class User extends Controller {
 		
 		$this->load->view('user/view', array('page_title' => 'User Control Panel'));
 	}
+	
+	function desmond()
+	{
+		echo 'DESMOND THE MOON BEAR';
+	}
 }
