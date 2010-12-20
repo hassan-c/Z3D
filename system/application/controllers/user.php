@@ -21,6 +21,7 @@ class User extends Controller {
 	
 	function desmond()
 	{
-		$this->load->view('blank', array('string' => 'DESMOND THE MOON BEAR.'));
+		$message = 'DESMOND THE MOON BEAR';
+		$this->load->view('base', array('page_title' => $message, 'string' => $message));
 	}
 }

@@ -7,22 +7,24 @@
 		
 		<div class="group">
 			<p>
-				ID: <?=$this->ion_auth->get_user()->id?> <br />
 				Username: <?=$this->ion_auth->get_user()->username?> <br />
+				Email: <?=$this->ion_auth->get_user()->email?> <br />
 				Created on: <?=$this->ion_auth->get_user()->created_on?> <br />
 				Last login: <?=$this->ion_auth->get_user()->last_login?> <br />
-				Group: <?=$this->ion_auth->get_user()->group?> <br />
+				Active: <?=$this->ion_auth->get_user()->active?> <br />
+				Group: <?=$this->ion_auth->get_user()->group_id?> <?=$this->ion_auth->get_user()->group?> (<?=$this->ion_auth->get_user()->group_description?>) <br />
 			</p>
 		</div>
 		
 		<p>
 			<span class="strong">Options</span> <br />
-			{options_description}
+			Change your basic account information and perform other actions
 		</p>
 		
 		<div class="group">
 			<p>
-				Nothing here yet. Move along...
+				<?=anchor('auth/change_password', 'Change password')?> | 
+				<?=anchor('auth/deactivate', 'Deactivate account')?>
 			</p>
 		</div>
 		

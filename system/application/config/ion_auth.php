@@ -60,7 +60,7 @@
 	 * A database column which is used to
 	 * login with.
 	 **/
-	$config['identity']            = 'username';
+	$config['identity']            = 'email';
 		 
 	/**
 	 * Minimum Required Length of Password

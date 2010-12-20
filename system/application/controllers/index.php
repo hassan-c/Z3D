@@ -7,21 +7,16 @@ class Index extends Controller {
 		parent::__construct();
 		
 		$this->load->library('ion_auth');
+		$this->load->helper('form');
 	}
 	
 	/**
-	 * @todo Create view skeleton for all pages
-	 * @todo regex-censor-list
-	 * @todo replace echo in create() - add var in view and pass
 	 * @todo add to previous todo: use built-in set error by ion-auth
 	 * @todo use set_value() on form fields
-	 * @todo add model to perform basic tasks
 	 */
 	
 	function index()
-	{
-		$this->load->helper('form');
-		
+	{	
 		if ($this->ion_auth->logged_in())
 		{
 			redirect('user');
@@ -39,12 +34,15 @@ class Index extends Controller {
 			redirect('user');
 		}
 		
-		$this->form_validation->set_rules('z3d', 'Z3D name', 'trim|required|alpha_numeric');
+		$this->form_validation->set_rules('z3d', 'Email', 'trim|required|valid_email|email_check');
 		$this->form_validation->set_rules('z3d_pass', 'Z3D password', 'trim|required|matches[z3d_pass_conf]');
 		$this->form_validation->set_rules('z3d_pass_conf', 'Z3D confirm password', 'trim|required');
 		
-		$user = $this->input->post('z3d');
+		$email = $this->input->post('z3d');
 		$pass = $this->input->post('z3d_pass');
+		
+		$tmp = explode('@', $email);
+		$user = $tmp[0];
 		
 		if ($this->form_validation->run() == false)
 		{
@@ -52,18 +50,18 @@ class Index extends Controller {
 		}
 		else
 		{
-			if ($this->ion_auth->register($user, $pass, $user.'_user@hassanc.co.uk', array()))
+			if ($this->ion_auth->register($user, $pass, $email, array()))
 			{
 				$this->load->view('index/create_view', array('page_title' => 'Create a new Z3D'));
 			}
 			else
 			{
-				echo '<p>That username already exists. Please choose a different one.</p>' . anchor('index', 'Go Back');
+				$this->load->view('base', array('page_title' => 'Error', 'string' => 'That email already exists. Please choose a different one. ' . anchor('index', 'Go Back')));
 			}
 		}
 	}
 	
-	function login()
+	/*function login()
 	{
 		$this->load->library('form_validation');
 		
@@ -95,13 +93,12 @@ class Index extends Controller {
 			}
 		}
 	}
-	
 	function logout()
 	{
 		$this->ion_auth->logout();
 		
 		redirect('index/login');
-	}
+	}*/
 }
 
 /* End of file index.php */
