@@ -24,4 +24,8 @@ class User extends Controller {
 		$message = 'DESMOND THE MOON BEAR';
 		$this->load->view('base', array('page_title' => $message, 'string' => $message));
 	}
+  
 }
+
+/* End of file user.php */
+/* Location: ./system/application/controllers/user.php */

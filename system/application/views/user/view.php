@@ -7,12 +7,12 @@
 		
 		<div class="group">
 			<p>
-				Username: <?=$this->ion_auth->get_user()->username?> <br />
-				Email: <?=$this->ion_auth->get_user()->email?> <br />
-				Created on: <?=$this->ion_auth->get_user()->created_on?> <br />
-				Last login: <?=$this->ion_auth->get_user()->last_login?> <br />
-				Active: <?=$this->ion_auth->get_user()->active?> <br />
-				Group: <?=$this->ion_auth->get_user()->group_id?> <?=$this->ion_auth->get_user()->group?> (<?=$this->ion_auth->get_user()->group_description?>) <br />
+				<span class="strong">Username:</span> <?=$this->ion_auth->get_user()->username?> <br />
+				<span class="strong">Email:</span> <?=$this->ion_auth->get_user()->email?> <br />
+				<span class="strong">Created on:</span> <?=$this->ion_auth->get_user()->created_on?> <br />
+				<span class="strong">Last login:</span> <?=$this->ion_auth->get_user()->last_login?> <br />
+				<span class="strong">Active:</span> <?=$this->ion_auth->get_user()->active?> <br />
+				<span class="strong">Group:</span> <?=$this->ion_auth->get_user()->group_id?>: <?=$this->ion_auth->get_user()->group?> (<?=$this->ion_auth->get_user()->group_description?>) <br />
 			</p>
 		</div>
 		

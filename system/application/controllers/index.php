@@ -27,11 +27,13 @@ class Index extends Controller {
 	
 	function create()
 	{
-	  
-    if (empty($this->input->post('z3d')) || empty($this->input->post('z3d_pass')))
-    {
-      redirect('index');
-    }
+		$email = $this->input->post('z3d');
+		$pass = $this->input->post('z3d_pass');
+		
+		if (empty($email) || empty($pass))
+		{
+			redirect('index');
+		}
     
 		$this->load->library('form_validation');
 		
@@ -43,9 +45,6 @@ class Index extends Controller {
 		$this->form_validation->set_rules('z3d', 'Email', 'trim|required|valid_email|email_check');
 		$this->form_validation->set_rules('z3d_pass', 'Z3D password', 'trim|required|matches[z3d_pass_conf]');
 		$this->form_validation->set_rules('z3d_pass_conf', 'Z3D confirm password', 'trim|required');
-		
-		$email = $this->input->post('z3d');
-		$pass = $this->input->post('z3d_pass');
 		
 		$tmp = explode('@', $email);
 		$user = $tmp[0];
