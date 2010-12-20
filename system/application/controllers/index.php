@@ -11,7 +11,7 @@ class Index extends Controller {
 	}
 	
 	/**
-	 * @todo add to previous todo: use built-in set error by ion-auth
+	 * @todo use built-in set_error() method by ion-auth
 	 * @todo use set_value() on form fields
 	 */
 	
@@ -60,45 +60,7 @@ class Index extends Controller {
 			}
 		}
 	}
-	
-	/*function login()
-	{
-		$this->load->library('form_validation');
-		
-		if ($this->ion_auth->logged_in())
-		{
-			redirect('user');
-		}
-		
-		$this->form_validation->set_rules('z3d', 'Z3D name', 'trim|required');
-		$this->form_validation->set_rules('z3d_pass', 'Z3D password', 'trim|required');
-		
-		$user = $this->input->post('z3d');
-		$pass = $this->input->post('z3d_pass');
-		$remember = $this->input->post('remember');
-		
-		if ($this->form_validation->run() == false)
-		{
-			$this->load->view('index/login_view', array('page_title' => 'Log in'));
-		}
-		else
-		{
-			if ($this->ion_auth->login($user, $pass, $remember))
-			{
-				redirect('user');
-			}
-			else
-			{
-				$this->load->view('index/login_view', array('page_title' => 'Log in'));
-			}
-		}
-	}
-	function logout()
-	{
-		$this->ion_auth->logout();
-		
-		redirect('index/login');
-	}*/
+
 }
 
 /* End of file index.php */
