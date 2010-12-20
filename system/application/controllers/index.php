@@ -26,7 +26,13 @@ class Index extends Controller {
 	}
 	
 	function create()
-	{	
+	{
+	  
+    if (empty($this->input->post('z3d')) || empty($this->input->post('z3d_pass')))
+    {
+      redirect('index');
+    }
+    
 		$this->load->library('form_validation');
 		
 		if ($this->ion_auth->logged_in())
